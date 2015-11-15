@@ -1,0 +1,59 @@
+/*****************************************************************************
+ * Copyright (C) Palash D. Moon
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation; either version 2.1 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
+ ****************************************************************************/
+void init(list *l){
+	l->head = NULL;
+	l->tail = NULL;
+}
+
+void insert(char *fname, char *lname,char *desg, int age, int sal){
+	//there will a temp pointer tmp to staff
+	node *tmp, *p;
+	//malloc it and add the values
+	tmp = (node*)malloc(sizeof(node));
+	//now insert the value of its vaious compartments into the pointer
+	tmp->fname = (char*)malloc(strlen(fname)+1);
+	strcpy(tmp->fname, fname);
+	tmp->lname = (char*)malloc(strlen(lname)+1);
+	strcpy(tmp->lname,lname);
+	tmp->desg = (char*)malloc(strlen(desg)+1);
+	tmp->age = age;
+	tmp->sal = sal;
+	if(l->head = NULL){
+		l->head = tmp;
+	}
+	else
+		p = l->head;
+
+void print(list *l) {
+
+	node *p = l->head;
+	while(p != l->tail) {
+		printf("%s \t", p->fname);
+		printf("%s\n",p->lname);
+		printf("%s\n",p->desg);
+		printf("%d\n",p->age);
+		printf("%d\n",p->sal);
+		p = p->next;
+	}
+	if(p){
+		printf("%s\t ", p->fname);
+		printf("%s\n",p->lname);
+		printf("%s\n",p->desg);
+		printf("%s\n",p->age);
+		printf("%s\n",p->sal);
+	}

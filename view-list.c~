@@ -1,0 +1,33 @@
+void view_list()
+{
+    FILE *view;
+    view=fopen("record.dat","r");
+    int test=0;
+
+    printf("\n\n*****************account holder list*****************************");
+    printf("\nAccount NO. \t  NAME    \t   ADDRESS\t   PHONE\n");
+
+    while(fscanf(view,"%d %s %d/%d/%d %d %s %s %ld %s %f %d/%d/%d",&add.acc_no,add.name,&add.dob.month,&add.dob.day,&add.dob.year,&add.age,add.address,add.citizenship,&add.phone,add.acc_type,&add.amt,&add.deposit.month,&add.deposit.day,&add.deposit.year)
+!=EOF)
+       {
+           printf("\n %d\t %s \t %s\t\t %ld ",add.acc_no,add.name,add.address,add.phone);
+		test++;
+           
+       }
+	printf("\n================================================================================================\n");
+
+    fclose(view);
+    if (test==0)
+        {  
+            printf("\nNO RECORDS!!\n");}
+
+   
+     printf("\n\nEnter 1 to go to the main menu and 0 to exit:");
+        scanf("%d",&main_exit);
+        
+        if (main_exit==1)
+            menu();
+        else if(main_exit==0)
+            close();
+      
+}

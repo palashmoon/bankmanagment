@@ -1,0 +1,83 @@
+#include<stdio.h>
+#include<string.h>
+#include<errno.h>
+#include"bank.h"
+void  see(){
+	FILE *ptr;
+	int test = 0,rate;
+	int choice;
+	float SI;
+	float inst;
+	float time;
+	int quit;
+	ptr = fopen ("bank.dat","r");
+	printf("enter account no. 	:");
+	scanf("%d",&check.acc_no);
+	 while (fscanf(ptr,"%d %s %s %s %d/%d/%d %d %s %ld %s %f %d/%d/%d",&add.acc_no, add.fname ,add.mname,add.lname,&add.dob.month,
+		&add.dob.day,&add.dob.year,&add.age,add.city,&add.phone,add.acc_type,&add.amount,&add.deposit.month,&add.deposit.day,
+		&add.deposit.year )!=EOF)
+		if(add.acc_no == check.acc_no)
+		{	
+			test = 1; 
+			 printf("\nAccount NO.	:%d\n",add.acc_no);
+			 printf("\n FNAME	:%s\n",add.fname);
+			 printf("\nMNAME	:%s\n",add.mname);
+			 printf("\nLname	:%s\n",add.lname);
+			 printf("dob:month/day/year	:%d/%d/%d\n",add.dob.month, add.dob.day, add.dob.year);
+			 printf("AGE	:%d\n",add.age);
+			 printf("CITY	:%s\n",add.city);
+			 printf("MOBILE		:%ld\n",add.phone);
+			 printf("account type	:%s\n",add.acc_type);
+			 printf("amount		:%f\n",add.amount);
+			 printf("month/day/year		:%d/%d/%d\n\n\n",add.deposit.month, add.deposit.day, add.deposit.year);
+			 if(strcmp(add.acc_type, "Fixed1") == 0) {
+                        		time = 1.0;
+                        		rate = 10;
+                        		inst = si(time, add.amount, rate);
+                        		printf("Interest              : $%.2f as on %d/%d/%d\n", inst, add.deposit.day,   
+							add.deposit.month, add.deposit.year+1);         
+                    		}
+                		else if(strcmp(add.acc_type, "Fixed2") == 0) {
+                        		time = 2.0;
+                        		rate = 11;
+                        		inst = si(time, add.amount, rate);
+                        		printf("Interest              : $%.2f as on %d/%d/%d\n", inst, add.deposit.day, 
+						add.deposit.month, add.deposit.year+2);
+                     		}
+               	 		else if(strcmp(add.acc_type, "Fixed3") == 0) {
+                        		time = 3.0;
+                        		rate = 13;
+                        		inst = si(time, add.amount, rate);
+                        		printf("Interest              : $%.2f as on %d/%d/%d\n", inst, add.deposit.day, 
+						add.deposit.month, add.deposit.year+3);
+				}
+			        else if(strcmp(add.acc_type,"saving")==0)
+				{
+					time = (1.0/12.0);	
+					rate = 10;
+					inst = si(time, add.amount, rate);
+					printf("Interest              : $%.2f as on %d of every month\n", inst, add.deposit.day);
+                     		
+				}
+			    else if (strcmp(add.acc_type,"current")==0)
+				printf("no interest");
+			
+				
+		    }
+
+	fclose(ptr);
+		if (test != 1) {
+			printf("enter 1 to main menu and 2 for exit");
+			scanf("%d",&quit);
+			}
+			if (quit == 1)
+				menu();
+			else
+				close();
+}
+
+float si(float time, float amount, int rate) {
+	float SI;
+    	SI = (rate * time * amount) / 100.0;
+    	return (SI);
+}
